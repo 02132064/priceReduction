@@ -1,0 +1,15 @@
+[
+  {
+    "type": "BUY_THREE_GET_ONE_FREE",
+    "barcode": [
+      "ITEM000001"
+    ]
+  },
+  {
+    "type": "OTHER_PROMOTION",
+    "barcode": [
+      "ITEM000003",
+      "ITEM000004"
+    ]
+  }
+]
