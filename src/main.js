@@ -1,18 +1,22 @@
 function formatNumber(items) {
-    let items = [{
-        barcode: barcode,
-        count: count
-    }];
     return items.map(function (i) {
-        if (i.indexOf("-")) {
+        if (i.indexOf("-") !== -1) {
+            return {
+                barcode: i.split('-')[0],
+                count: parseInt(i.split('-')[1])
+            }
+        } else {
             return {
                 barcode: i,
-                count: i.indexOf("-")
+                count: 1
             }
-        }else{
-
         }
-    })
+    });
 }
 
+console.log(formatNumber([
+    'ITEM000001',
+    'ITEM000001',
+    'ITEM000003-2'
+]));
 module.exports = {formatNumber};
