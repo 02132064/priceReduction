@@ -14,9 +14,13 @@ function formatNumber(items) {
     });
 }
 
+function getCount() {
+
+}
+
 console.log(formatNumber([
     'ITEM000001',
     'ITEM000001',
     'ITEM000003-2'
 ]));
-module.exports = {formatNumber};
+module.exports = {formatNumber, getCount};
