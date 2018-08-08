@@ -14,13 +14,35 @@ function formatNumber(items) {
     });
 }
 
-function getCount() {
-
+function getNoRepeat(barcode, goods) {
+    for (let good of goods) {
+        if (barcode === good.barcode) {
+            return good;
+        }
+    }
+    return null;
 }
 
-console.log(formatNumber([
-    'ITEM000001',
-    'ITEM000001',
-    'ITEM000003-2'
-]));
+function getCount(items) {
+    let result = [items[0]];
+    for (let i = 1; i < items.length; i++) {
+        let countItem = getNoRepeat(items[i].barcode, result);
+        if (countItem === null) {
+            result.push({
+                    barcode: items[i].barcode,
+                    count: items[i].count
+                }
+            );
+        } else {
+            countItem.count += items[i].count;
+        }
+    }
+    return result;
+}
+
+// console.log(getCount([{barcode: 'ITEM000001', count: 1},
+//     {barcode: 'ITEM000001', count: 3},
+//     {barcode: 'ITEM000001', count: 1},
+//     {barcode: 'ITEM000001', count: 1}
+// ]));
 module.exports = {formatNumber, getCount};
